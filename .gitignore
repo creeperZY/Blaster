@@ -17,8 +17,13 @@ DerivedDataCache
 Intermediate
 Saved
 Build
-Content/StarterContent
+Content
+#Content/StarterContent
+#Content/Assets
+#Content/Maps
 
+.git
+.idea
 .vscode
 .vs
 *.VC.db
