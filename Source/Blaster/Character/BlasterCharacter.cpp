@@ -3,8 +3,10 @@
 
 #include "BlasterCharacter.h"
 #include "Camera/CameraComponent.h"
+#include "Components/WidgetComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "UObject/UnrealTypePrivate.h"
 
 ABlasterCharacter::ABlasterCharacter()
 {
@@ -24,6 +26,9 @@ ABlasterCharacter::ABlasterCharacter()
 	//GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_Walking);
 	//GetCharacterMovement()->MaxStepHeight = 100.f;
 	//GetCharacterMovement()->SetWalkableFloorAngle(70.f);
+
+	OverheadWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("OverheadWidget"));
+	OverheadWidget->SetupAttachment(RootComponent);
 }
 
 void ABlasterCharacter::BeginPlay()
