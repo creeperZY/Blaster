@@ -32,6 +32,9 @@ public:
 
 	UPROPERTY(Replicated)
 	bool bDisableGameplay = false;
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void ShowSniperScopeWidget(bool bShowScope);
 protected:
 	virtual void BeginPlay() override;
 
@@ -199,6 +202,7 @@ public:
 	ECombatState GetCombatState() const;
 	FORCEINLINE UCombatComponent* GetCombat() const { return Combat; }
 	FORCEINLINE bool GetDisableGameplay() const { return bDisableGameplay; }
+	FORCEINLINE UAnimMontage* GetReloadMontage() const { return ReloadMontage; }
 };
 
 

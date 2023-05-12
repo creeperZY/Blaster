@@ -28,6 +28,11 @@ public:
 	void FinishReloading();
 	
 	void FireButtonPressed(bool bPressed);
+
+	UFUNCTION(BlueprintCallable)
+	void ShotgunShellReload();
+
+	void JumpToShotgunEnd();
 protected:
 	virtual void BeginPlay() override;
 	void SetAiming(bool bIsAiming);
@@ -148,7 +153,10 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	int32 StartingSniperAmmo = 0;
-	
+
+	UPROPERTY(EditAnywhere)
+	int32 StartingGrenadeLauncherAmmo = 0;
+
 	void InitializeCarriedAmmo();
 
 	UPROPERTY(ReplicatedUsing = OnRep_CombatState)
@@ -158,7 +166,7 @@ private:
 	void OnRep_CombatState();
 
 	void UpdateAmmoValues();
-	
+	void UpdateShotgunAmmoValues();
 public:	
 	
 
