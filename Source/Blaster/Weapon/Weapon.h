@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "WeaponTypes.h"
+#include "Components/PostProcessComponent.h"
 #include "Weapon.generated.h"
 
 UENUM(BlueprintType)
@@ -72,7 +73,14 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	class USoundCue* EquipSound;
-	
+
+	/*
+	 *  Enable or disable custom depth
+	 */
+	void EnableCustomDepth(bool bEnable);
+
+	//UPROPERTY(VisibleAnywhere)
+	//UPostProcessComponent* PostProcessComponent;
 protected:
 	virtual void BeginPlay() override;
 
