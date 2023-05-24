@@ -8,6 +8,7 @@
 #include "Blaster/Interfaces/InteractWithCrosshairsInterface.h"
 #include "Components/TimelineComponent.h"
 #include "Blaster/BlasterTypes/CombatState.h"
+#include "Blaster/Weapon/Weapon.h"
 #include "BlasterCharacter.generated.h"
 
 UCLASS()
@@ -62,6 +63,8 @@ protected:
 	void FireButtonReleased();
 	void PlayHitReactMontage();
 	void GrenadeButtonPressed();
+	void DropOrDestoryWeapon(AWeapon* Weapon);
+	void DropOrDestoryWeapons();
 
 	UFUNCTION()
 	void ReceiveDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* InstigatorController, AActor* DamageCauser);
