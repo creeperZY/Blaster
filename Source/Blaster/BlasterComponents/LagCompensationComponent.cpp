@@ -23,7 +23,7 @@ void ULagCompensationComponent::BeginPlay()
 
 	FFramePackage Package;
 	SaveFramePackage(Package);
-	ShowFramePackage(Package, FColor::Orange);
+	//ShowFramePackage(Package, FColor::Orange);
 }
 
 
@@ -376,7 +376,7 @@ FFramePackage ULagCompensationComponent::GetFrameToCheck(ABlasterCharacter* HitC
 		FrameToCheck = InterpBetweenFrames(Older->GetValue(), Younger->GetValue(), HitTime);
 		// Interpolate between Younger and Older
 	}
-	FrameToCheck.Character == HitCharacter;
+	FrameToCheck.Character = HitCharacter;
 	return FrameToCheck;
 }
 
