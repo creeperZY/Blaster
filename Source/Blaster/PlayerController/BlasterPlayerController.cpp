@@ -52,11 +52,16 @@ void ABlasterPlayerController::CheckPing(float DeltaTime)
 		PlayerState = PlayerState == nullptr ? GetPlayerState<APlayerState>() : PlayerState;
 		if(PlayerState)
 		{
-			if (PlayerState->GetPing() * 4 > HighPingThreshold) // ping is compressed, it's actually ping / 4
-				{
+			if (PlayerState-> GetPingInMilliseconds() > HighPingThreshold) // deprecated - GetPing(): ping is compressed, it's actually ping / 4
+			{
 				HighPingWarning();
 				PingAnimationRunningTime = 0.f;
-				}
+				ServerReportPingStatus(true);
+			}
+			else
+			{
+				ServerReportPingStatus(false);
+			}
 		}
 		HighPingRunningTime = 0.f;
 	}
@@ -74,6 +79,13 @@ void ABlasterPlayerController::CheckPing(float DeltaTime)
 		}
 	}
 }
+
+// Is the ping too high?
+void ABlasterPlayerController::ServerReportPingStatus_Implementation(bool bHighPing)
+{
+	HighPingDelegate.Broadcast(bHighPing);
+}
+
 
 void ABlasterPlayerController::CheckTimeSync(float DeltaTime)
 {

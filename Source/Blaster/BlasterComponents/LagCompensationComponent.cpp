@@ -139,7 +139,7 @@ FServerSideRewindResult ULagCompensationComponent::ProjectileConfirmHit(const FF
 	PathParams.StartLocation = TraceStart;
 	PathParams.SimFrequency = 15.f;
 	PathParams.ProjectileRadius = 5.f;
-	PathParams.TraceChannel = ECollisionChannel::ECC_HitBox;
+	PathParams.TraceChannel = ECC_HitBox;
 	PathParams.ActorsToIgnore.Add(GetOwner());
 	PathParams.DrawDebugTime = 5.f;
 	PathParams.DrawDebugType = EDrawDebugTrace::ForDuration;
