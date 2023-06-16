@@ -70,6 +70,11 @@ void AWeapon::BeginPlay()
 		PickupWidget->SetVisibility(false);
 	}
 
+	if (!HasAuthority())
+	{
+		FireDelay = 0.001f;
+	}
+	
 }
 
 void AWeapon::Tick(float DeltaTime)
@@ -266,11 +271,20 @@ void AWeapon::OnEquippedSecondary()
 		WeaponMesh->SetEnableGravity(true);
 		WeaponMesh->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
 	}
-	EnableCustomDepth(true);
 	if (WeaponMesh)
 	{
 		WeaponMesh->SetCustomDepthStencilValue(CUSTOM_DEPTH_TAN);
 		WeaponMesh->MarkRenderStateDirty();
+	}
+	
+	BlasterOwnerCharacter = BlasterOwnerCharacter == nullptr ? Cast<ABlasterCharacter>(GetOwner()) : BlasterOwnerCharacter; 
+	if (BlasterOwnerCharacter)
+	{
+		BlasterOwnerController = BlasterOwnerController == nullptr ? Cast<ABlasterPlayerController>(BlasterOwnerCharacter->Controller) : BlasterOwnerController; 
+		if (BlasterOwnerController && HasAuthority() && BlasterOwnerController->HighPingDelegate.IsBound())
+		{
+			BlasterOwnerController->HighPingDelegate.RemoveDynamic(this, &AWeapon::OnPingTooHigh);
+		}
 	}
 }
 
