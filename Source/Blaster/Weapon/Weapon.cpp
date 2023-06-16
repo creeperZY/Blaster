@@ -69,11 +69,6 @@ void AWeapon::BeginPlay()
 	{
 		PickupWidget->SetVisibility(false);
 	}
-
-	if (!HasAuthority())
-	{
-		FireDelay = 0.001f;
-	}
 	
 }
 
