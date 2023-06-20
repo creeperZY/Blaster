@@ -24,6 +24,9 @@ protected:
 	UFUNCTION()
 	void OnDestorySession(bool bWasSuccessful);
 
+	UFUNCTION()
+	void OnPlayerLeftGame();
+
 private:
 	UPROPERTY(meta = (BindWidget))
 	class UButton* ReturnButton;
