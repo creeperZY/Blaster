@@ -214,6 +214,10 @@ void ABlasterCharacter::DropOrDestoryWeapons()
 		{
 			DropOrDestoryWeapon(Combat->SecondaryWeapon);
 		}
+		if (Combat->TheFlag)
+		{
+			Combat->TheFlag->Dropped();
+		}
 	}
 }
 
